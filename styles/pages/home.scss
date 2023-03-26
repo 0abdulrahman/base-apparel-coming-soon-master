@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   font-size: $font-size;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 42.5%;
   grid-template-rows: 150px 1fr;
   position: relative;
   background: $white_gradient;
@@ -29,7 +29,7 @@ body {
   }
   main {
     grid-area: 2/1/3/2;
-    padding: 15% 10% 0 20%;
+    padding: 15% 7% 0 20%;
     max-width: 80%;
     min-width: 500px;
     h1 {
@@ -75,6 +75,7 @@ body {
           color: $dark_grayish_red;
           caret-color: $dessaturated_red;
           transition: border 0.2s;
+          background-color: $white;
           &::placeholder {
             color: $soft_dessaturated_red;
           }
