@@ -32,7 +32,7 @@ body::before {
   position: absolute;
   content: "";
   height: 100%;
-  width: 50%;
+  width: 57.5%;
   top: 0;
   left: 0;
   background: url("../images/bg-pattern-desktop.svg") top center/cover no-repeat;
