@@ -1,0 +1,17 @@
+$white: #fff;
+$black: #000;
+$transperant_gray: rgba(0, 0, 0, 0.1);
+
+$light_shadow: rgba(0, 0, 0, 0.1);
+$regular_shadow: rgba(0, 0, 0, 0.15);
+$blue_shadow: rgba(89, 124, 201, 0.2);
+$darker_shadow: #000000b3;
+
+$dessaturated_red: hsl(0, 36%, 70%);
+$light_dessaturated_red: hsla(0, 36%, 70%, 0.7);
+$soft_dessaturated_red: hsl(356, 20%, 84%);
+$button_hover: hsl(359, 75%, 89%);
+$soft_red: hsl(0, 93%, 68%);
+$dark_grayish_red: hsl(0, 6%, 24%);
+$white_gradient: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+$pink_gradient: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));

@@ -1,0 +1,254 @@
+@use "../variables/colors" as *;
+@use "../variables/media" as *;
+@use "../variables/font" as *;
+@use "../helpers/mixins" as *;
+
+body {
+  min-height: 100vh;
+  font-size: $font-size;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 150px 1fr;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  header {
+    grid-area: 1 / 1 / 2 / 2;
+    @include align-center;
+    padding-left: 20%;
+  }
+  main {
+    grid-area: 2/1/3/2;
+    padding: 15% 10% 0 20%;
+    max-width: 80%;
+    min-width: 500px;
+    h1 {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    form {
+      h2 {
+        font: {
+          size: calc($font-size + 3em);
+          weight: 800;
+        }
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: $dark_grayish_red;
+        span {
+          font-weight: 300;
+          color: $dessaturated_red;
+        }
+        margin-bottom: 0.4em;
+      }
+      p {
+        font-size: $font-size;
+        color: $dessaturated_red;
+        line-height: 1.5;
+        margin-bottom: 2.75em;
+      }
+      .submit {
+        position: relative;
+        input[type="text"] {
+          padding: 1.25em 6em 1.25em 2em;
+          border-radius: 50px;
+          border: 1px solid $soft_dessaturated_red;
+          width: 100%;
+          font-size: $font-size;
+          color: $dark_grayish_red;
+          caret-color: $dessaturated_red;
+          transition: border 0.2s;
+          &::placeholder {
+            color: $soft_dessaturated_red;
+          }
+          &:focus {
+            outline: none;
+            border: 1px solid $dessaturated_red;
+          }
+        }
+        input[type="image"] {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: $pink_gradient;
+          padding: 1.5em 3em;
+          border-radius: 50px;
+          box-shadow: 0 10px 30px $light_dessaturated_red;
+          &:hover {
+            background: $button_hover;
+            box-shadow: 0 10px 30px $dessaturated_red;
+          }
+        }
+        &.error-empty {
+          input[type="text"] {
+            padding: 1.25em 9em 1.25em 2em;
+            border: 2px solid $soft_red;
+          }
+          &::before {
+            position: absolute;
+            content: "!";
+            right: 110px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: $soft_red;
+            color: $white;
+            @include center;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            font-size: $font-size;
+            font-family: $font;
+            z-index: 2;
+          }
+          &::after {
+            position: absolute;
+            content: "Please enter your email";
+            bottom: -30px;
+            left: 35px;
+            color: $soft_red;
+          }
+        }
+        &.error-validation {
+          input[type="text"] {
+            padding: 1.25em 9em 1.25em 2em;
+            border: 2px solid $soft_red;
+          }
+          &::before {
+            position: absolute;
+            content: "!";
+            right: 110px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: $soft_red;
+            color: $white;
+            @include center;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            font-size: $font-size;
+            font-family: $font;
+            z-index: 2;
+          }
+          &::after {
+            position: absolute;
+            content: "Please provide a valid email";
+            bottom: -30px;
+            left: 35px;
+            color: $soft_red;
+          }
+        }
+      }
+    }
+  }
+  .img {
+    grid-area: 1 / 2 / 3 / 3;
+    width: 100%;
+    @include media("laptop") {
+      height: 100%;
+      width: auto;
+    }
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../images/hero-desktop.jpg") center/cover no-repeat;
+    }
+  }
+  @include media("mobile") {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 85px 250px 1fr;
+    padding-bottom: 6em;
+    header {
+      grid-area: 1 / 1 / 2 / 2;
+      padding-left: 32px;
+      img {
+        height: 25px;
+      }
+    }
+    main {
+      padding: 5em 2.5em 0;
+      text-align: center;
+      grid-area: 3 / 1 / 4 / 2;
+      max-width: 100%;
+      min-width: auto;
+      form {
+        h2 {
+          font-size: calc($font-size + 2em);
+        }
+        .submit {
+          input[type="text"] {
+            padding: 1em 6em 1em 1.5em;
+          }
+          input[type="image"] {
+            padding: 1.2em 2.5em;
+          }
+          &.error-empty {
+            input[type="text"] {
+              padding: 1em 7.5em 1em 1em;
+              border: 2px solid $soft_red;
+            }
+            &::before {
+              right: 90px;
+            }
+            &::after {
+              position: absolute;
+              content: "Please enter your email";
+              bottom: -30px;
+              left: 35px;
+              color: $soft_red;
+            }
+          }
+          &.error-validation {
+            input[type="text"] {
+              padding: 1em 7.5em 1em 1em;
+              border: 2px solid $soft_red;
+            }
+            &::before {
+              right: 90px;
+            }
+            &::after {
+              position: absolute;
+              content: "Please provide a valid email";
+              bottom: -30px;
+              left: 35px;
+              color: $soft_red;
+            }
+          }
+        }
+      }
+    }
+    .img {
+      grid-area: 2 / 1 / 3 / 2;
+      overflow: hidden;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../images/hero-mobile.jpg") center/cover no-repeat;
+      }
+    }
+  }
+}
